@@ -1,0 +1,7 @@
+transformers[torch]==4.21.3
+huggingface-hub==0.7.0
+datasets
+torch
+tensorflow
+evaluate
+sacrebleu

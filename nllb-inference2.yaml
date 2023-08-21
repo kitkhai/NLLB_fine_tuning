@@ -1,0 +1,25 @@
+transforms: [sentencepiece, prefix, suffix]
+# nllb-200 specific prefixing and suffixing
+src_prefix: "eng_Latn"
+tgt_prefix: "zho_Hans"
+tgt_file_prefix: true
+src_suffix: "</s>"
+tgt_suffix: ""
+
+#### Subword
+src_subword_model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/flores200_sacrebleu_tokenizer_spm2.model"
+tgt_subword_model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/flores200_sacrebleu_tokenizer_spm2.model"
+src_subword_nbest: 1
+src_subword_alpha: 0.0
+tgt_subword_nbest: 1
+tgt_subword_alpha: 0.0
+# Model info
+model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt2.pt"
+# Inference
+max_length: 512
+gpu: 0
+batch_type: tokens
+batch_size: 2048
+fp16:
+beam_size: 5
+report_time: true

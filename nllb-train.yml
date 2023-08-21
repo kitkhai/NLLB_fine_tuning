@@ -1,0 +1,84 @@
+share_vocab: true
+src_vocab: "/content/drive/MyDrive/OpenNMT-py/nllb-200/dictionary2.txt"
+src_words_min_frequency: 1
+src_vocab_size: 256232
+tgt_vocab: "/content/drive/MyDrive/OpenNMT-py/nllb-200/dictionary2.txt"
+tgt_words_min_frequency: 1
+tgt_vocab_size: 256232
+vocab_size_multiple: 1
+decoder_start_token: '</s>'
+#### Subword
+src_subword_model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/flores200_sacrebleu_tokenizer_spm2.model"
+tgt_subword_model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/flores200_sacrebleu_tokenizer_spm2.model"
+src_subword_nbest: 1
+src_subword_alpha: 0.0
+tgt_subword_nbest: 1
+tgt_subword_alpha: 0.0
+# Corpus opts:
+data:
+    cc-matrix-enzh:
+        path_src: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-0to30M.en"
+        path_tgt: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-0to30M.zh"
+        transforms: [sentencepiece, prefix, suffix, filtertoolong]
+        weight: 10
+        src_prefix: "</s> eng_Latn"
+        tgt_prefix: "zho_Hans"
+        src_suffix: ""
+        tgt_suffix: ""
+update_vocab: true
+train_from: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt.pt"
+reset_optim: all
+save_data: "/content/drive/MyDrive/OpenNMT-py/nllb-200"
+save_model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt2.pt"
+log_file: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt.log"
+keep_checkpoint: 50
+save_checkpoint_steps: 100
+average_decay: 0.0005
+seed: 1234
+report_every: 10
+train_steps: 2000
+valid_steps: 100
+# Batching
+bucket_size: 262144
+num_workers: 4
+prefetch_factor: 400
+world_size: 1
+gpu_ranks: [0]
+batch_type: "tokens"
+batch_size: 384
+valid_batch_size: 384
+batch_size_multiple: 1
+accum_count: [32, 32, 32]
+accum_steps: [0, 15000, 30000]
+# Optimization
+model_dtype: "fp16"
+optim: "sgd"
+learning_rate: 30
+warmup_steps: 100
+decay_method: "noam"
+adam_beta2: 0.98
+max_grad_norm: 0
+label_smoothing: 0.1
+param_init: 0
+param_init_glorot: true
+normalization: "tokens"
+
+# Model
+override_opts: true
+encoder_type: transformer
+decoder_type: transformer
+enc_layers: 24
+dec_layers: 24
+heads: 16
+hidden_size: 1024
+word_vec_size: 1024
+transformer_ff: 8192
+add_qkvbias: true
+add_ffnbias: true
+dropout_steps: [0, 15000, 30000]
+dropout: [0.1, 0.1, 0.1]
+attention_dropout: [0.1, 0.1, 0.1]
+share_decoder_embeddings: true
+share_embeddings: true
+position_encoding: true
+position_encoding_type: 'SinusoidalConcat'
