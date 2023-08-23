@@ -17,8 +17,8 @@ tgt_subword_alpha: 0.0
 # Corpus opts:
 data:
     cc-matrix-enzh:
-        path_src: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-0to30M.en"
-        path_tgt: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-0to30M.zh"
+        path_src: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-300K.en"
+        path_tgt: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-300K.zh"
         transforms: [sentencepiece, prefix, suffix, filtertoolong]
         weight: 10
         src_prefix: "</s> eng_Latn"
@@ -67,12 +67,12 @@ normalization: "tokens"
 override_opts: true
 encoder_type: transformer
 decoder_type: transformer
-enc_layers: 24
-dec_layers: 24
+enc_layers: 12
+dec_layers: 12
 heads: 16
 hidden_size: 1024
 word_vec_size: 1024
-transformer_ff: 8192
+transformer_ff: 4096
 add_qkvbias: true
 add_ffnbias: true
 dropout_steps: [0, 15000, 30000]
