@@ -1,10 +1,10 @@
 share_vocab: true
 src_vocab: "/content/drive/MyDrive/OpenNMT-py/nllb-200/dictionary2.txt"
 src_words_min_frequency: 1
-src_vocab_size: 256232
+src_vocab_size: 256025
 tgt_vocab: "/content/drive/MyDrive/OpenNMT-py/nllb-200/dictionary2.txt"
 tgt_words_min_frequency: 1
-tgt_vocab_size: 256232
+tgt_vocab_size: 256025
 vocab_size_multiple: 1
 decoder_start_token: '</s>'
 #### Subword
@@ -17,8 +17,8 @@ tgt_subword_alpha: 0.0
 # Corpus opts:
 data:
     cc-matrix-enzh:
-        path_src: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-300K.en"
-        path_tgt: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-300K.zh"
+        path_src: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-1K.en"
+        path_tgt: "/content/drive/MyDrive/OpenNMT-py/en-zh/cc-matrix-enzh-1K.zh"
         transforms: [sentencepiece, prefix, suffix, filtertoolong]
         weight: 10
         src_prefix: "</s> eng_Latn"
@@ -39,14 +39,14 @@ report_every: 10
 train_steps: 2000
 valid_steps: 100
 # Batching
-bucket_size: 262144
+bucket_size: 1024
 num_workers: 4
-prefetch_factor: 400
+prefetch_factor: 2
 world_size: 1
 gpu_ranks: [0]
 batch_type: "tokens"
-batch_size: 384
-valid_batch_size: 384
+batch_size: 1
+valid_batch_size: 1
 batch_size_multiple: 1
 accum_count: [32, 32, 32]
 accum_steps: [0, 15000, 30000]

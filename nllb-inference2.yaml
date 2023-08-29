@@ -14,7 +14,7 @@ src_subword_alpha: 0.0
 tgt_subword_nbest: 1
 tgt_subword_alpha: 0.0
 # Model info
-model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt2.pt"
+model: "/content/drive/MyDrive/OpenNMT-py/nllb-200/nllb-200-600M-onmt2.pt_step_1000.pt"
 # Inference
 max_length: 512
 gpu: 0
